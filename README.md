@@ -17,7 +17,7 @@ const [module name] = require('[module name]')
 
 ### Module Installation
 
-To install a module, click on the `[module name]-min.js` file and download it. Move it to your Scriptable folder in iCloud.
+To install a module, click on the `[module name].js` file and download it. Move it to your Scriptable folder in iCloud.
 
 Alternatively, you can copy the file's text contents and paste it into a new script.
 
