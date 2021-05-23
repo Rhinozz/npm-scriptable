@@ -1,6 +1,10 @@
 # npm-scriptable
 A project to convert npm packages to Scriptable modules.
 
+Made by Rhinozz.
+
+Contributions by [FifiTheBulldog](https://github.com/FifiTheBulldog).
+
 ## Usage
 
 To use these with the npm package format, add a line at the top of your script:
