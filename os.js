@@ -9,56 +9,68 @@ Based off of the 'os' module: https://nodejs.org/api/os.html
 Constants:
 - EOL
 End of line character.
+Returns string
 - constants
 OS constants - does not work.
+Returns string - if working, returns object literal
 
 Functions:
 - arch()
 Get CPU architecture.
+Returns string
 - cpus()
 Get details of CPU cores - not great, very hacky.
+Returns array of object literals
 - endianness()
 Get CPU endianness.
+Returns string
 - freemem()
 Get free memory - does not work.
+Returns string - if working, returns integer
 - getPriority(pid)
 Get priority of item by PID - does not work.
+Returns string - if working, returns integer
 - homedir()
 Get the home directory.
+Returns string
 - hostname()
 Get device name.
+Returns string
 - loadavg()
 Get load averages - Unix-specific, set to [0, 0, 0] for non-Unix
+Returns array of integers
 - networkInterfaces()
 Get internet connections - does not return IPs besides 127.0.0.1, basically unusable
+Returns object literal
 - platform()
 Get OS platform.
+Returns string
 - release()
 Get OS release version.
+Returns string
 - setPriority(pid, priority)
 Set prioriry of item by PID - does not work.
+Returns string - if working, returns null
 - tmpdir()
 Get the temporary directory.
+Returns string
 - totalmem()
 Get total device memory - not great, very hacky.
+Returns string - if working, returns integer
 - type()
 Get OS kernel type.
+Returns string
 - uptime()
 Get OS uptime - does not work.
+Returns string - if working, returns integer
 - userInfo(options)
 Get user and device info.
+Returns object literal
 - version()
 Get kernel version.
+Returns string
 
 Feel free to add or optimize!
-*/
-
-/*
-To use these conmands, import this module:
-
-const { os } = importModule('os.js');
-
-Then use os like you normally would.
 */
 
 module.exports = {
@@ -98,89 +110,153 @@ module.exports = {
         let core = "";
         let speed = "";
         
-        var res = "[ ";
+        var res = [];
         if(cpuform[0] === "4780") {
-            res = `[ { model: Apple Twister, Apple Hurricane, or Apple Vortex,
-    speed: 2160, 2340, or 2490,
-    times: 'unknown' },
-  { model: Apple Twister, Apple Hurricane, or Apple Vortex,
-    speed: 2160, 2340, or 2490,
-    times: 'unknown' },
-  { model: Apple Hurricane or Apple Vortex,
-    speed: 2340 or 2490,
-    times: 'unknown' },
-  { model: Apple Zephyr or Apple Vortex,
-    speed: 1050 or 2490,
-    times: 'unknown' },
-  { model: Apple Zephyr or Apple Tempest,
-    speed: 1050 or 1590,
-    times: 'unknown' },
-  { model: Apple Zephyr or Apple Tempest,
-    speed: 1050 or 1590,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' } ]`;    
+            res = 
+    [
+        {
+            model: 'Apple Twister, Apple Hurricane, or Apple Vortex',
+            speed: '2160, 2340, or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Twister, Apple Hurricane, or Apple Vortex',
+            speed: '2160, 2340, or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Hurricane or Apple Vortex',
+            speed: '2340 or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Zephyr or Apple Vortex',
+            speed: '1050 or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Zephyr or Apple Tempest',
+            speed: '1050 or 1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Zephyr or Apple Tempest',
+            speed: '1050 or 1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        }    
+    ]
         } else if(cpuform[0] === "2084") {
-            res = `[ { model: Apple Twister, Apple Fusion, or Apple Monsoon,
-    speed: 1850, 2340, or 2390,
-    times: 'unknown' },
-    model: Apple Twister, Apple Fusion, or Apple Monsoon,
-    speed: 1850, 2340, or 2390,
-    times: 'unknown' },
-  { model: Apple Mistral,
-    speed: 1420,
-    times: 'unknown' },
-  { model: Apple Mistral,
-    speed: 1420,
-    times: 'unknown' },
-  { model: Apple Mistral,
-    speed: 1420,
-    times: 'unknown' },
-  { model: Apple Mistral,
-    speed: 1420,
-    times: 'unknown' } ]`;
+            res = 
+    [
+        {
+            model: 'Apple Twister, Apple Fusion, or Apple Monsoon',
+            speed: '1850, 2340, or 2390',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Twister, Apple Fusion, or Apple Monsoon',
+            speed: '1850, 2340, or 2390',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Mistral',
+            speed: '1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Mistral',
+            speed: '1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Mistral',
+            speed: '1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Mistral',
+            speed: '1420',
+            times: 'unknown'
+        }
+    ]
         } else if(cpuform[0] === "3000") {
-            res = `[ { model: Apple Twister, Apple Fusion, Apple Monsoon, or Apple Lightning,
-    speed: 1850, 2340, 2390, or 2650,
-    times: 'unknown' },
-  { model: Apple Twister, Apple Fusion, Apple Monsoon, or Apple Lightning,
-    speed: 1850, 2340, 2390, or 2650,
-    times: 'unknown' },
-  { model: Apple Thunder or Apple Mistral,
-    speed: 1800 or 1420,
-    times: 'unknown' },
-  { model: Apple Thunder or Apple Mistral,
-    speed: 1800 or 1420,
-    times: 'unknown' },
-  { model: Apple Thunder or Apple Mistral,
-    speed: 1800 or 1420,
-    times: 'unknown' },
-  { model: Apple Thunder or Apple Mistral,
-    speed: 1800 or 1420,
-    times: 'unknown' } ]`;
+            res = 
+    [
+        {
+            model: 'Apple Twister, Apple Fusion, Apple Monsoon, or Apple Lightning',
+            speed: '1850, 2340, 2390, or 2650',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Twister, Apple Fusion, Apple Monsoon, or Apple Lightning',
+            speed: '1850, 2340, 2390, or 2650',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Thunder or Apple Mistral',
+            speed: '1800 or 1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Thunder or Apple Mistral',
+            speed: '1800 or 1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Thunder or Apple Mistral',
+            speed: '1800 or 1420',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Thunder or Apple Mistral',
+            speed: '1800 or 1420',
+            times: 'unknown'
+        }
+    ]
         } else if(cpuform[0] === "3584") {
-            res = `[ { model: Apple Fusion, Apple Typhoon, or Apple Vortex,
-    speed: 2340, 2390, or 2490,
-    times: 'unknown' },
-    model: Apple Fusion, Apple Typhoon, or Apple Vortex,
-    speed: 2340, 2390, or 2490,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' },
-  { model: Apple Tempest,
-    speed: 1590,
-    times: 'unknown' } ]`;
+            res = 
+    [
+        {
+            model: 'Apple Fusion, Apple Typhoon, or Apple Vortex',
+            speed: '2340, 2390, or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Fusion, Apple Typhoon, or Apple Vortex',
+            speed: '2340, 2390, or 2490',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        },
+        {
+            model: 'Apple Tempest',
+            speed: '1590',
+            times: 'unknown'
+        }
+    ]
         } else {
             for(var i = 0; i < parseInt(cpuform[2]); i++) {
                 if(coresplit[2] != "n") {
@@ -197,11 +273,9 @@ module.exports = {
                     core = coresplit[0];
                     speed = speedsplit[0];
                 }
-                    
-                res += `{ model: '${core}',\n    speed: ${speed},\n    times: 'unknown' },\n  `
+                
+                res.push({model:core,speed:speed,times:'unknown'});
             }
-            
-            res = res.slice(0, -4) + " ]";
         }
         
         return(res);
@@ -228,38 +302,50 @@ module.exports = {
     },
     
     loadavg: function() {
-        return('[0, 0, 0]');
+        return([0, 0, 0]);
     },
     
     networkInterfaces: function() {
-        return(`{ 'Wi-Fi':
-    [ { address: 'unknown',
-        netmask: 'unknown',
-        family: 'IPv6',
-        mac: 'unknown',
-        scopeid: 'unknown',
-        internal: false,
-        cidr: 'unknown' },
-    [ { address: 'unknown',
-        netmask: 'unknown',
-        family: 'IPv4',
-        mac: 'unknown',,
-        internal: false,
-        cidr: 'unknown' },
-  'Loopback Pseudo-Interface 1':
-    [ { address: '::1',
-        netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
-        family: 'IPv6',
-        mac: '00:00:00:00:00:00',
-        scopeid: 0,
-        internal: true,
-        cidr: '::1/128' },
-      { address: '127.0.0.1',
-        netmask: '255.0.0.0',
-        family: 'IPv4',
-        mac: '00:00:00:00:00:00',
-        internal: true,
-        cidr: '127.0.0.1/8' } ] }`)
+        return({
+    'Wi-Fi': [
+        {
+            address: 'unknown',
+            netmask: 'unknown',
+            family: 'IPv4',
+            mac: 'unknown',
+            internal: false,
+            cidr: 'unknown'
+        },
+        {
+            address: 'unknown',
+            netmask: 'unknown',
+            family: 'IPv6',
+            mac: 'unknown',
+            scopeid: 'unknown',
+            internal: true,
+            cidr: 'unknown'
+        }
+    ],
+    'Loopback Pseudo-Interface 1': [
+        {
+            address: '127.0.0.1',
+            netmask: '255.0.0.0',
+            family: 'IPv4',
+            mac: '00:00:00:00:00:00',
+            internal: true,
+            cidr: '127.0.0.1/8'
+        },
+        {
+            address: '::1',
+            netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+            family: 'IPv6',
+            mac: '00:00:00:00:00:00',
+            scopeid: 0,
+            internal: true,
+            cidr: '::1/128'
+        }
+    ]
+})
     },
     
     platform: function() {
@@ -309,7 +395,7 @@ module.exports = {
         return("error: it is not possible to get the system uptime");
     },
     
-    userInfo: function(options) {    
+    userInfo: function(options) {
         let name = Device.name();
         let home = FileManager.local().documentsDirectory();
     
@@ -327,11 +413,13 @@ module.exports = {
                 return(`error: '${options.encoding}' is not a valid encoding. possible values: buffer, utf8`);
             }
         }
-        return(`uid: -1
-gid: -1
-username: ${name}
-homedir: ${home}
-shell: null`);
+        return({
+    uid: -1,
+    gid: -1,
+    username: name,
+    homedir: home,
+    shell: null
+});
     },
     
     version: function() {
